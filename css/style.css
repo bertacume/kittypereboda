@@ -240,6 +240,7 @@ a { color: inherit; }
 .flora .f-5 { --w: clamp(110px, 14vw, 220px); top: 48vw;  right: 2vw; }
 .flora .f-2 { --w: clamp(170px, 28vw, 440px); bottom: -7vw; left: 27%; }
 .flora .f-6 { --w: clamp(170px, 28vw, 440px); bottom: -4vw; right: -3vw; }
+.flora .f-9 { --w: clamp(120px, 19vw, 300px); bottom: -3vw; left: -2vw; }
 
 @media (max-width: 720px) {
   body { font-size: 1.1rem; }
@@ -293,6 +294,7 @@ a { color: inherit; }
 /* Fully handwritten heading (transparent PNG with ~1/3 ink, 2/3 padding);
    negative margins trim the empty space so it sits where the text heading did. */
 .page-lead--hand { max-width: none; }
+.page-lead--hand picture { display: block; }
 .page-lead--hand img {
   width: min(88%, 470px);
   margin: -7% auto calc(3rem - 8%);
@@ -405,9 +407,11 @@ html.locked body > :not(.gate) { visibility: hidden; }
   .flora .f-1 { --w: 27vw; top: -5vw;  left: -9vw; }
   .flora .f-3 { --w: 24vw; top: 12vw;  right: -5vw; }
   .flora .f-4 { --w: 18vw; top: 88vw;  left: -3vw;  display: block; }
-  .flora .f-5 { --w: 16vw; top: 100vw; right: -2vw; display: block; }
-  .flora .f-2 { --w: 34vw; left: 26%;  bottom: -5vw; }
-  .flora .f-6 { --w: 30vw; right: -5vw; bottom: -2vw; }
+  .flora .f-5 { --w: 20vw; top: 76vw;  right: 7vw; display: block; }   /* tucked under the polaroid corner */
+  /* bottom offsets eat the blank canvas under each drawing so the ink is cut by the screen edge */
+  .flora .f-2 { --w: 34vw; left: 26%;  bottom: -19vw; }
+  .flora .f-6 { --w: 30vw; right: -5vw; bottom: -12vw; }
+  .flora .f-9 { --w: 27vw; left: -2vw;  bottom: -8vw; }
 }
 
 /* inner pages on phones: text runs full width, so the two mid-page drawings would sit under it */
@@ -423,8 +427,9 @@ html.locked body > :not(.gate) { visibility: hidden; }
     display: block;
     position: absolute;
     top: 1.35rem;
-    left: 1.25rem;
-    width: 120px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 130px;
     z-index: 20;
   }
   .brand img { width: 100%; }
@@ -479,4 +484,14 @@ html.locked body > :not(.gate) { visibility: hidden; }
   /* the menu is out of flow now, so the content needs the top room back */
   .hero { padding-top: 5.5rem; }
   .page { padding-top: 5.5rem; }
+}
+
+/* phones: the two-line "-m" headings have much less blank padding than the wide ones */
+@media (max-width: 720px) {
+  .page-lead--hand img,
+  .page-lead--hand-long img {
+    width: 80vw;
+    margin: -1rem auto 1.4rem;
+  }
+  .masia { margin-top: -4.5rem; }
 }
