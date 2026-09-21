@@ -495,3 +495,10 @@ html.locked body > :not(.gate) { visibility: hidden; }
   }
   .masia { margin-top: -4.5rem; }
 }
+
+/* "Hola, <nom>" replaces the venue line when the URL carries ?n=…; shown at every width */
+.hero-label--greeting { display: block; color: var(--ink); margin-top: 0.6rem; }
+@media (min-width: 721px) {
+  .hero-label--greeting { margin-bottom: 1.6rem; font-size: 0.8rem; }
+  .hero-label--greeting + .cta { margin-top: 0; }
+}
