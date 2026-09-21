@@ -503,6 +503,7 @@ html.locked body > :not(.gate) { visibility: hidden; }
   /* wide screens: greeting and button on one row, same size, aligned on the baseline */
   .hero-row { flex-direction: row; align-items: baseline; gap: 1.8rem; margin-top: 3.5vh; }
   .hero-label--greeting { font-size: 1rem; letter-spacing: 0.18em; margin: 0; }
+  .hero-hola { display: none; }
   .hero .date { margin-bottom: 0; }
   .hero-row + * { margin-top: 0; }
 }

@@ -25,7 +25,13 @@
     var label = document.querySelector('.hero-label--place');
     var cta = document.querySelector('.hero .cta');
     if (label) {
-      label.textContent = 'Hola, ' + list;
+      // "Hola, " only on phones (hidden by css on wide screens)
+      label.textContent = '';
+      var hola = document.createElement('span');
+      hola.className = 'hero-hola';
+      hola.textContent = 'Hola, ';
+      label.appendChild(hola);
+      label.appendChild(document.createTextNode(list));
       label.classList.add('hero-label--greeting');
     }
     if (cta) cta.textContent = plural ? 'Confirmeu que veniu' : 'Confirma que véns';
