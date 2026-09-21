@@ -243,7 +243,6 @@ a { color: inherit; }
 
 @media (max-width: 720px) {
   body { font-size: 1.1rem; }
-  .nav { flex-direction: column; align-items: center; gap: 0.55rem; font-size: 0.85rem; padding-top: 2rem; }
   .hero { padding-top: 5vh; }
   .footer { padding-bottom: 60vw; }
   .schedule li { grid-template-columns: 1fr; gap: 0.25rem; }
@@ -403,8 +402,8 @@ html.locked body > :not(.gate) { visibility: hidden; }
   }
 
   /* all six drawings, sized and placed like the mockup */
-  .flora .f-1 { --w: 27vw; top: -5vw;  left: -4vw; }
-  .flora .f-3 { --w: 24vw; top: -2vw;  right: -5vw; }
+  .flora .f-1 { --w: 27vw; top: -5vw;  left: -9vw; }
+  .flora .f-3 { --w: 24vw; top: 12vw;  right: -5vw; }
   .flora .f-4 { --w: 18vw; top: 88vw;  left: -3vw;  display: block; }
   .flora .f-5 { --w: 16vw; top: 100vw; right: -2vw; display: block; }
   .flora .f-2 { --w: 34vw; left: 26%;  bottom: -5vw; }
@@ -414,5 +413,70 @@ html.locked body > :not(.gate) { visibility: hidden; }
 /* inner pages on phones: text runs full width, so the two mid-page drawings would sit under it */
 @media (max-width: 720px) {
   .flora--inner .f-4, .flora--inner .f-5 { display: none; }
-  .flora .f-1 { left: -6vw; }
+}
+
+/* ---------- Burger menu (phones) ---------- */
+.burger, .brand { display: none; }
+
+@media (max-width: 720px) {
+  .brand {
+    display: block;
+    position: absolute;
+    top: 1.35rem;
+    left: 1.25rem;
+    width: 120px;
+    z-index: 20;
+  }
+  .brand img { width: 100%; }
+
+  .burger {
+    display: block;
+    position: fixed;
+    top: 1.1rem;
+    right: 1rem;
+    z-index: 40;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .burger span {
+    position: absolute;
+    left: 8px;
+    right: 8px;
+    height: 1.5px;
+    background: var(--ink);
+    transition: transform 0.3s, top 0.3s;
+  }
+  .burger span:first-child { top: 17px; }
+  .burger span:last-child  { top: 26px; }
+  .burger[aria-expanded="true"] span:first-child { top: 21.5px; transform: rotate(45deg); }
+  .burger[aria-expanded="true"] span:last-child  { top: 21.5px; transform: rotate(-45deg); }
+
+  /* the nav becomes a full-screen sheet */
+  .nav {
+    position: fixed;
+    inset: 0;
+    z-index: 30;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.6rem;
+    padding: 0;
+    font-size: 1rem;
+    letter-spacing: 0.25em;
+    background: var(--bg);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+  }
+  .nav.is-open { opacity: 1; visibility: visible; }
+  html.menu-open { overflow: hidden; }
+
+  /* the menu is out of flow now, so the content needs the top room back */
+  .hero { padding-top: 5.5rem; }
+  .page { padding-top: 5.5rem; }
 }
