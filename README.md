@@ -23,6 +23,16 @@ Shared styles live in `css/style.css`. Drawings and the GIF live in `media/`.
   (Google Maps → Share → Embed a map, copy the `src`).
 - **Schedule, FAQ and contact email** — placeholder text in `programa.html`, `preguntes.html` (`hola@example.com`).
 
+## Password
+
+Every page loads `js/gate.js`, which shows a password screen until the guest enters the invitation code
+(remembered in the browser afterwards). It's a client-side gate on a static site — it keeps casual visitors
+out, but is not real security. Only the SHA-256 of the password is in the code; to change it:
+
+```sh
+printf 'newpassword' | shasum -a 256   # paste the hash into HASH in js/gate.js
+```
+
 ## Drawings
 
 Each drawing is positioned in `css/style.css` under `/* Flora */` with a class `f-1` … `f-8` matching

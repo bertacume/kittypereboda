@@ -344,3 +344,62 @@ a { color: inherit; }
   margin: -7.5rem auto 2.5rem;   /* tucks up under the handwritten heading */
 }
 .page-lead--hand { position: relative; z-index: 1; } /* heading stays above the painting */
+
+/* ---------- Password gate ---------- */
+html.locked { overflow: hidden; }
+html.locked body > :not(.gate) { visibility: hidden; }
+.gate {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  background: var(--bg);
+  transition: opacity 0.4s;
+}
+.gate.is-open { opacity: 0; pointer-events: none; }
+.gate-box {
+  width: min(100%, 380px);
+  text-align: center;
+}
+.gate-logo { width: 220px; margin: 0 auto 2rem; }
+.gate-text { margin: 0 0 1.6rem; color: var(--ink-soft); font-size: 1.1rem; line-height: 1.5; }
+.gate-input {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: var(--mono);
+  font-size: 1.2rem;
+  letter-spacing: 0.4em;
+  text-align: center;
+  color: var(--ink);
+  background: transparent;
+  border: 0;
+  border-bottom: 1.5px solid var(--ink);
+  padding: 0.6rem 0;
+  margin-bottom: 1.6rem;
+  outline: none;
+  border-radius: 0;
+}
+.gate-input:focus { border-bottom-color: var(--red); }
+.gate-btn {
+  font-family: var(--mono);
+  font-size: 0.9rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--red);
+  border: 0;
+  border-radius: 999px;
+  padding: 0.9rem 2rem;
+  cursor: pointer;
+}
+.gate-btn:hover { opacity: 0.85; }
+.gate-error { margin: 1.2rem 0 0; color: var(--red); font-size: 1rem; }
+.gate-box.shake { animation: shake 0.35s; }
+@keyframes shake {
+  20% { transform: translateX(-6px); } 40% { transform: translateX(6px); }
+  60% { transform: translateX(-4px); } 80% { transform: translateX(4px); }
+}
