@@ -29,5 +29,13 @@
       label.classList.add('hero-label--greeting');
     }
     if (cta) cta.textContent = plural ? 'Confirmeu que veniu' : 'Confirma que véns';
+    // group greeting + button so they can sit on one row on wide screens
+    if (label && cta) {
+      var row = document.createElement('div');
+      row.className = 'hero-row';
+      label.parentNode.insertBefore(row, label);
+      row.appendChild(label);
+      row.appendChild(cta);
+    }
   });
 })();
