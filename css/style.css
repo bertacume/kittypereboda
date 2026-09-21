@@ -331,15 +331,16 @@ a { color: inherit; }
    negative margins trim the empty space so it sits where the text heading did. */
 .page-lead--hand { max-width: none; }
 .page-lead--hand img {
-  width: min(100%, 600px);
-  margin: -9% auto calc(3rem - 8%);
+  width: min(88%, 470px);
+  margin: -7% auto calc(3rem - 8%);
+  opacity: 0.9;    /* softens the very crisp scan so it reads like ink, not print */
 }
 /* longer sentences get a little more room so the letters stay legible */
-.page-lead--hand-long img { width: min(100%, 700px); }
+.page-lead--hand-long img { width: min(96%, 560px); }
 
 /* Watercolour of the venue on the Lloc page */
 .masia {
   width: min(100%, 520px);
-  margin: -10rem auto 2.5rem;   /* tucks up under the handwritten heading */
+  margin: -7.5rem auto 2.5rem;   /* tucks up under the handwritten heading */
 }
 .page-lead--hand { position: relative; z-index: 1; } /* heading stays above the painting */
