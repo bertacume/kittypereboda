@@ -33,6 +33,13 @@ out, but is not real security. Only the SHA-256 of the password is in the code; 
 printf 'newpassword' | shasum -a 256   # paste the hash into HASH in js/gate.js
 ```
 
+## Link preview (WhatsApp, iMessage, Slack…)
+
+`media/share.jpg` (1200×630) is the image chat apps show when the link is shared, set via the Open Graph
+`<meta>` tags in each page's `<head>`. Replace the file to change it (keep the size and name, or update the
+`og:image` tags). Chat apps cache previews, so a change can take a while to show up — WhatsApp in particular
+may need the link re-sent with a `?v=2` suffix.
+
 ## Drawings
 
 Each drawing is positioned in `css/style.css` under `/* Flora */` with a class `f-1` … `f-8` matching
