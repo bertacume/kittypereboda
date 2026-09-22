@@ -21,8 +21,7 @@ body {
   font-family: var(--serif);
   font-size: 1.2rem;
   line-height: 1.55;
-  min-height: 100vh;
-  min-height: 100svh;   /* iOS Safari: the visible height, toolbar included */
+  min-height: 100vh;    /* iOS Safari: the large viewport, i.e. under the toolbar too */
   position: relative;
   overflow-x: hidden;
 }
@@ -385,9 +384,8 @@ html.locked body > :not(.gate) { visibility: hidden; }
 @media (max-width: 720px) {
   .hero {
     min-height: 100vh;
-    min-height: 100svh;
     justify-content: center;
-    padding: 3.6rem 1rem 36vw;   /* bottom = room for the drawings, so nothing scrolls */
+    padding: 3.6rem 1rem 40vw;   /* bottom = room for the drawings (part of them sits under Safari's toolbar) */
   }
   .hero .title { width: 60vw; margin-bottom: 0; }
   .hero-label { display: block; }
@@ -511,4 +509,13 @@ html.locked body > :not(.gate) { visibility: hidden; }
   .hero-hola { display: none; }
   .hero .date { margin-bottom: 0; }
   .hero-row + * { margin-top: 0; }
+}
+
+/* Phone home page: the page is one screen tall (large viewport, so the bottom drawings run
+   under Safari's translucent toolbar) and scrolling is locked so it never jumps. Only on
+   phones tall enough to hold everything; small ones keep scrolling normally. */
+@media (max-width: 720px) and (min-height: 640px) {
+  html.home { overflow: hidden; height: 100%; }
+  html.home body { overflow: hidden; touch-action: none; }
+  html.home .nav, html.home .burger { touch-action: auto; }
 }
