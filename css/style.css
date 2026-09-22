@@ -22,6 +22,7 @@ body {
   font-size: 1.2rem;
   line-height: 1.55;
   min-height: 100vh;
+  min-height: 100svh;   /* iOS Safari: the visible height, toolbar included */
   position: relative;
   overflow-x: hidden;
 }
@@ -382,19 +383,24 @@ html.locked body > :not(.gate) { visibility: hidden; }
 
 /* ---------- Home on phones: follows the mobile mockup ---------- */
 @media (max-width: 720px) {
-  .hero { padding: 3vh 1rem 200px; }
-  .hero .title { width: 66vw; margin-bottom: 0; }
+  .hero {
+    min-height: 100vh;
+    min-height: 100svh;
+    justify-content: center;
+    padding: 3.6rem 1rem 36vw;   /* bottom = room for the drawings, so nothing scrolls */
+  }
+  .hero .title { width: 60vw; margin-bottom: 0; }
   .hero-label { display: block; }
   .hero-label--place { margin-top: 0.4rem; }
 
-  .photo, .polaroid { width: 66vw; margin-top: 1.6rem; }
+  .photo, .polaroid { width: 58vw; margin-top: 1.2rem; }
   .polaroid .bloom, .photo .bloom { display: none; }
 
-  .hero .date { width: 40vw; margin: 2.4rem 0 0; }
+  .hero .date { width: 38vw; margin: 1.8rem 0 0; }
 
   /* the underlined link becomes a pill button */
   .hero .cta {
-    margin-top: 1.6rem;
+    margin-top: 1.2rem;
     color: #fff;
     background: var(--red);
     border-bottom: 0;
@@ -407,7 +413,7 @@ html.locked body > :not(.gate) { visibility: hidden; }
   .flora .f-1 { --w: 27vw; top: -5vw;  left: -9vw; }
   .flora .f-3 { --w: 24vw; top: 12vw;  right: -5vw; }
   .flora .f-4 { --w: 18vw; top: 88vw;  left: -3vw;  display: block; }
-  .flora .f-5 { --w: 20vw; top: 76vw;  right: 7vw; display: block; }   /* tucked under the polaroid corner */
+  .flora .f-5 { --w: 18vw; top: 70vw;  right: 11vw; display: block; }   /* tucked under the polaroid corner */
   /* bottom offsets eat the blank canvas under each drawing so the ink is cut by the screen edge */
   .flora .f-2 { --w: 34vw; left: 26%;  bottom: -19vw; }
   .flora .f-6 { --w: 30vw; right: -5vw; bottom: -12vw; }
@@ -482,7 +488,6 @@ html.locked body > :not(.gate) { visibility: hidden; }
   html.menu-open { overflow: hidden; }
 
   /* the menu is out of flow now, so the content needs the top room back */
-  .hero { padding-top: 5.5rem; }
   .page { padding-top: 5.5rem; }
 }
 
